@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cybr. | Elite Cyber Response</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --bg: #050505;
+            --card-bg: rgba(20, 20, 25, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #6366f1; /* Indigo */
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --text-head: #ffffff;
+            --text-body: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-body);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-head);
+        }
+
+        /* --- STUNNING BACKGROUND BLOB --- */
+        .mesh-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .container {
+            padding: 0 24px;
+            max-width: 600px; /* Tighter for a focused mobile look */
+            margin: 0 auto;
+        }
+
+        /* --- NAV --- */
+        nav {
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-box {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .status {
+            background: rgba(255,255,255,0.05);
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 40px 0 60px;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 0.95;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero span {
+            background: linear-gradient(to right, #fff, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- ICON CARDS --- */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: transform 0.3s ease;
+        }
+
+        .icon-wrap {
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 8px;
+            font-size: 1.25rem;
+        }
+
+        /* --- MODERN FORM --- */
+        .form-section {
+            background: var(--card-bg);
+            border-radius: 32px;
+            padding: 32px 24px;
+            border: 1px solid var(--border);
+            margin-bottom: 120px;
+        }
+
+        .form-section h2 { margin-bottom: 8px; font-size: 1.8rem; }
+        .form-section p { margin-bottom: 32px; font-size: 0.95rem; }
+
+        .input-box {
+            margin-bottom: 24px;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #64748b;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.07);
+        }
+
+        /* --- SHINY BUTTON --- */
+        .btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 18px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn:active { transform: scale(0.96); }
+
+        /* Mobile FAB for report */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            left: 24px;
+            right: 24px;
+            z-index: 100;
+        }
+
+        @media (min-width: 768px) {
+            .features { grid-template-columns: repeat(3, 1fr); max-width: 1000px; margin: 0 auto 60px; }
+            .container { max-width: 1000px; }
+            .hero h1 { font-size: 5rem; }
+            .hero { text-align: center; }
+            .form-section { max-width: 500px; margin-left: auto; margin-right: auto; }
+            .fab { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mesh-gradient"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <div class="logo-box">
+                    <i data-lucide="shield-check" size="20" stroke-width="3"></i>
+                </div>
+                Cybr.
+            </div>
+            <div class="status">
+                <div class="dot"></div> Agent Online
+            </div>
+        </nav>
+
+        <section class="hero">
+            <h1>Digital <span>Defense</span> for the Modern Era.</h1>
+            <p>Elite-level recovery and legal support for victims of cybercrime. We act fast so you can recover faster.</p>
+        </section>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="icon-wrap"><i data-lucide="fingerprint"></i></div>
+                <h3>Identity</h3>
+                <p>Advanced recovery for stolen social and corporate identities.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrap"><i data-lucide="banknote"></i></div>
+                <h3>Assets</h3>
+                <p>Tracing and intercepting fraudulent financial transactions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrap"><i data-lucide="gavel"></i></div>
+                <h3>Legal</h3>
+                <p>Airtight forensic documentation for law enforcement.</p>
+            </div>
+        </div>
+
+        <section class="form-section" id="report">
+            <h2>Secure Report</h2>
+            <p>Fill out the details below. All data is end-to-end encrypted.</p>
+            
+            <form>
+                <div class="input-box">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your name">
+                </div>
+                <div class="input-box">
+                    <label>Emergency Contact</label>
+                    <input type="tel" placeholder="+880 1xxx-xxxxxx">
+                </div>
+                <div class="input-box">
+                    <label>Case Type</label>
+                    <select>
+                        <option>Financial Fraud</option>
+                        <option>Account Takeover</option>
+                        <option>Cyber Extortion</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label>Description</label>
+                    <textarea rows="4" placeholder="What happened?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn">
+                    Launch Investigation <i data-lucide="arrow-right" size="18"></i>
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <div class="fab">
+        <button class="btn" onclick="document.getElementById('report').scrollIntoView({behavior: 'smooth'})">
+            <i data-lucide="alert-circle" size="18"></i> Report Incident Now
+        </button>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
